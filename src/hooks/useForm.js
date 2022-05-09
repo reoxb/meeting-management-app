@@ -18,10 +18,6 @@ export default function useForm(initialState, validate) {
 
     }, [errors, isSubmitting, values, initialState])
 
-    useEffect(() => {
-        setValues(initialState)
-    }, [initialState])
-
     const handleChange = (event) => {
         event.persist()
         setValues(

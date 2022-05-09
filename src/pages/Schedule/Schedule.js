@@ -16,12 +16,14 @@ export default function Schedule() {
     let query = useQuery();
     const queryDay = query.get('day');
 
-    const [initialState, setInitialState] = useState({
+    const initialState = {
         date: '',
         name: '',
         description: '',
         attendees: '',
-    });
+    };
+
+    const [eventInfoData, setEventInfoData] = useState({});
 
     const {
         handleSubmit,
@@ -57,14 +59,16 @@ export default function Schedule() {
                 const queryNumber = Number(queryDay)
                 return month === queryNumber;
             })
-            setInitialState(eventInfo);
+            setEventInfoData(eventInfo);
         }
     }, [queryDay, eventState]);
+
+    const { date, name, description, email } = eventInfoData;
 
     return (
         <>
             {redirectOnDashboard && <Navigate to={`/dashboard`} />}
-            <h1>{queryDay? 'Editing' : 'Creating'}</h1>
+            <h1>{queryDay ? 'Editing' : 'Creating'}</h1>
             <div className="schedule-container">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <label key="date-label">Date: </label>
@@ -73,7 +77,7 @@ export default function Schedule() {
                         id="date"
                         key="date"
                         name="date"
-                        value={values?.date || ''}
+                        value={date || values?.date}
                         placeholder="DD-MM-YYYY"
                         onChange={handleChange}
                         onBlur={handleBlur} />
@@ -84,7 +88,7 @@ export default function Schedule() {
                         id="name"
                         key="name"
                         name="name"
-                        value={values?.name || ''}
+                        value={(name || values?.name) || ''}
                         placeholder="Your name..."
                         onChange={handleChange}
                         onBlur={handleBlur} />
@@ -95,7 +99,7 @@ export default function Schedule() {
                         key="description"
                         name="description"
                         placeholder="Write some description here..."
-                        value={values?.description || ''}
+                        value={(description || values?.description) || ''}
                         onChange={handleChange}
                         onBlur={handleBlur}>
                     </textarea>
@@ -105,7 +109,7 @@ export default function Schedule() {
                         id="attendees"
                         key="attendees"
                         name="email"
-                        value={values?.email || ''}
+                        value={(email || values?.email) || ''}
                         placeholder="attendees@mail.com"
                         onChange={handleChange}
                         onBlur={handleBlur} />
