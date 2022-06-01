@@ -77,8 +77,8 @@ export default function Schedule() {
                         id="date"
                         key="date"
                         name="date"
-                        value={date || values?.date}
-                        placeholder="DD-MM-YYYY"
+                        value={values?.date}
+                        placeholder={date || "DD-MM-YYYY"}
                         onChange={handleChange}
                         onBlur={handleBlur} />
                     {errors.date && <div className='login-form__error'> {errors.date} </div>}
@@ -88,8 +88,8 @@ export default function Schedule() {
                         id="name"
                         key="name"
                         name="name"
-                        value={(name || values?.name) || ''}
-                        placeholder="Your name..."
+                        value={values?.name}
+                        placeholder={name || "Your name..."}
                         onChange={handleChange}
                         onBlur={handleBlur} />
                     {errors.name && <p className='login-form__error'> {errors.name} </p>}
@@ -98,8 +98,8 @@ export default function Schedule() {
                         id="description"
                         key="description"
                         name="description"
-                        placeholder="Write some description here..."
-                        value={(description || values?.description) || ''}
+                        placeholder={description || "Write some description here..."}
+                        value={values?.description}
                         onChange={handleChange}
                         onBlur={handleBlur}>
                     </textarea>
@@ -109,8 +109,8 @@ export default function Schedule() {
                         id="attendees"
                         key="attendees"
                         name="email"
-                        value={(email || values?.email) || ''}
-                        placeholder="attendees@mail.com"
+                        value={values?.email}
+                        placeholder={ email || "attendees@mail.com"}
                         onChange={handleChange}
                         onBlur={handleBlur} />
                     {errors.email && <p className='login-form__error'> {errors.email} </p>}

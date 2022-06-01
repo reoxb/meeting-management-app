@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router";
 import { AuthContext } from '../../context/AuthContext';
 import { Calendar } from '../../components/Calendar';
+import { Navigation } from '../../components/Navigation';
 
 
 const Dashboard = () => {
@@ -12,7 +13,12 @@ const Dashboard = () => {
 
     return (
         !!authState.userInfo ? (
-            <Calendar/>
+            <>
+                <Navigation />
+                <div className="container">
+                    <Calendar/>
+                </div>
+            </>
         ) : (
             <Navigate to="/login" />
         )

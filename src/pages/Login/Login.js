@@ -56,7 +56,7 @@ function Login(props) {
 
 
   return (
-    <div>
+    <div className="container">
       {(!!authState.userInfo || redirectOnLogin) && <Navigate to="/dashboard" />}
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="login-form__content">
@@ -92,7 +92,7 @@ function Login(props) {
           }
         </div>
       </form >
-    </div >
+    </div>
   );
 }
 

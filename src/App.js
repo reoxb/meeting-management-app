@@ -23,7 +23,7 @@ const PrivateWrapper = () => (
 
 function App() {
   return (
-    <div className="container">
+    <div>
       <AuthProvider>
         <EventProvider>
           <Routes>
